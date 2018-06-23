@@ -1,0 +1,6 @@
+Flask
+gunicorn
+Flask-PyMongo
+requests
+urllib3
+Werkzeug
