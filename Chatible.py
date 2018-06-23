@@ -8,13 +8,12 @@ def isFacebookMessage(url):
     if o.scheme != 'https': 
         return False
     if ('fbcdn.net' in o.hostname) and (o.path.endswith('.png') or o.path.endswith('.jpg') or o.path.endswith('.jpeg') or o.path.endswith('.gif')):
-        return True
+        return url.split(" ")
     return False
 
 def handleUser(senderId,timestamp,message,name,profile_pic,gender):
         usersCollection = app.mongo.db.Users
         result = usersCollection.find_one({'_id':int(senderId)})
-        print(result)
         if result is None:
             usersCollection.insert_one({ "_id": int(senderId), "idCouple":None, "status": 1, "favorite":'any' , "timestamp": timestamp, "name": name, "gender": gender, "profile_pic": profile_pic})
             handleMessage(senderId,"Chờ 1 chút nhaaa :D Đang tìm bạn cho bạn nèee","text")
@@ -29,9 +28,9 @@ def handleUser(senderId,timestamp,message,name,profile_pic,gender):
                 handleMessage(senderId,"Bình tĩnh nào D:","text")
             if(status==2):
                 partnerId = result['idCouple']
-                if(isFacebookMessage(message)):
-                    handleMessage(senderId,"Hiện tại thì chúng mình chưa hoàn thành được cái send hình thông cảm nhaa","text")
-                    handleMessage(partnerId,"Bạn của bạn vừa send 1 hình nhưng mà chúng mình kh chuyển qua cho bạn được :< Rất xin lỗi trong lần thử nghiệm nhéee","text")
+                isImage = isFacebookMessage(message)
+                if(isImage):
+                    handleMessage(partnerId,isImage,"image")
                 else:
                     if(message.lower()=="pp"):
                         baibai(senderId,partnerId)
@@ -41,6 +40,9 @@ def handleUser(senderId,timestamp,message,name,profile_pic,gender):
 def handleMessage(senderId,msg,type):
     if(type=="text"):
         ChatfuelAPI.sendText(senderId,msg)
+    if(type=="image"):
+        for img in msg:
+            ChatfuelAPI.sendImage(senderId,img)
 
 def startSession():
     usersCollection = app.mongo.db.Users
