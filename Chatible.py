@@ -33,7 +33,7 @@ def handleUser(senderId,timestamp,message,name,profile_pic,gender):
                     handleMessage(senderId,"Hiện tại thì chúng mình chưa hoàn thành được cái send hình thông cảm nhaa","text")
                     handleMessage(partnerId,"Bạn của bạn vừa send 1 hình nhưng mà chúng mình kh chuyển qua cho bạn được :< Rất xin lỗi trong lần thử nghiệm nhéee","text")
                 else:
-                    if(message=="pp"):
+                    if(message.lower()=="pp"):
                         baibai(senderId,partnerId)
                     else:
                         handleMessage(partnerId,message,"text")
