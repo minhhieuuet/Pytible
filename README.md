@@ -10,11 +10,12 @@ Do chính sách của Facebook đã khóa API Messenger Platforms vì vậy ta k
 - Phụ thuộc vào nó
 
 ## Deploy lên Server Heroku
-Chi tiết mình sẽ để ở file pdf sau: [Cách deploy lên Server]()
+Chi tiết mình sẽ để ở file pdf sau: [Cách deploy lên Server](https://github.com/nghminh163/ChatibleForChatfuel/blob/master/H%C6%B0%E1%BB%9Bng%20d%E1%BA%ABn%20deploy%20Chatible%20cho%20Chatfuel.pdf)
 
-![]()
+[![Deploy](https://www.herokucdn.com/deploy/button.svg)](https://heroku.com/deploy?template=https://github.com/nghminh163/ChatibleForChatfuel)
 
 ## Issue
 Vui lòng Issue theo Issue của Github nếu có lỗi trong quá trình sử dụng + Email hoặc Facebook để mình tiện liên lạc khi rep :> 
 
-## Liên hệ
+## Thanks 
+[heroku-basic-flask](https://github.com/datademofun/heroku-basic-flask)
