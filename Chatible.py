@@ -54,12 +54,12 @@ def startSession():
             user2 = result[random.randint(0,len(result)-1)]["_id"]
         usersCollection.update_one({"_id":int(user1)},{"$set":{"status":2,"timestamp":None,"idCouple":user2}})
         usersCollection.update_one({"_id":int(user2)},{"$set":{"status":2,"timestamp":None,"idCouple":user1}})
-        handleMessage(user1,"Hì tìm thấy bạn rùi thử chào nhau 1 câu xem nàoo","text")
-        handleMessage(user2,"Hì tìm thấy bạn rùi thử chào nhau 1 câu xem nàoo","text")
+        handleMessage(user1,"Hì tìm thấy bạn rùi thử chào nhau 1 câu xem nàoo. Để kết thúc hãy nhắn pp nhéee","text")
+        handleMessage(user2,"Hì tìm thấy bạn rùi thử chào nhau 1 câu xem nàoo. Để kết thúc hãy nhắn pp nhéee","text")
 
 def baibai(senderId,partnerId):
     usersCollection = app.mongo.db.Users
     usersCollection.update_one({"_id":int(senderId)},{"$set":{"status":0,"idCouple":None}})
     usersCollection.update_one({"_id":int(partnerId)},{"$set":{"status":0,"idCouple":None}})
     handleMessage(senderId,"Bạn đã kết thúc cuộc trò chuyện này :(","text")
-    handleMessage(partnerId,"Bạn kia đã kết thúc cuộc trò chuyện nfay :(","text")
+    handleMessage(partnerId,"Bạn kia đã kết thúc cuộc trò chuyện này :( Đừng buồn nhé tiếp tục tìm bạn khác nàooo","text")
