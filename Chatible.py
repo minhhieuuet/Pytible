@@ -59,5 +59,5 @@ def baibai(senderId,partnerId):
     usersCollection = app.mongo.db.Users
     usersCollection.update_one({"_id":int(senderId)},{"$set":{"status":0,"idCouple":None}})
     usersCollection.update_one({"_id":int(partnerId)},{"$set":{"status":0,"idCouple":None}})
-    handleMessage(senderId,"Bạn đã chấm dứt hợp đồng với đối tác :(","text")
-    handleMessage(partnerId,"Đối tác đã chấm dứt hợp đồng với bạn :(","text")
+    handleMessage(senderId,"Bạn đã kết thúc cuộc trò chuyện này :(","text")
+    handleMessage(partnerId,"Bạn kia đã kết thúc cuộc trò chuyện nfay :(","text")
