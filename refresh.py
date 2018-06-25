@@ -1,4 +1,4 @@
 import requests
 import os
-r = requests.delete('https://graph.facebook.com/v2.6/me/messenger_profile?access_token=EAADZAb0ZA3rd8BAHi3iKW5M28Uus9WkDY26iCeANMfZAGX76GDlJWnS517IkvWUS84cXxoaUP9z7070hDZBEA9pdzdPDoIVFHS8XNPnDy1r97rNnD79SEJ6gq8UUF30vNuEZAvlwe992plzzYdaRNzPkfZAUrx3LbbTsY5em4LxwZDZD',json={"fields":["persistent_menu"]})
+r = requests.delete('https://graph.facebook.com/v2.6/me/messenger_profile?access_token=EAADZAb0ZA3rd8BAA6nyWL3hzlHN87mW4WC2dltYbZBSGZAFNZC3vacIR9cg2lMpZBO9r4PU4wZCZAD0pvYBkUUo77k2etZAJg3WDlpQy2FQQDMDEqQFFLMdOnSKfysZB7plLoXv5lN4nYslzov9tF55RY9jIvRgZCEy0KeuGiVApaZBVOQZDZD',json={"fields":["persistent_menu"]})
 print (r.status_code)
