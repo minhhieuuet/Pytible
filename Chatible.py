@@ -125,7 +125,7 @@ def code(senderId,msg,status):
         if(status==0):
             ChatfuelAPI.sendChangeFavorite(senderId)
         else:
-            handleMessage(senderId,"Vui lòng cuộc trò chuyện hoặc yêu cầu tìm bạn để chọn người sẽ bắt cặp tiếp theo nhé","text")
+            handleMessage(senderId,"Vui lòng hủy cuộc trò chuyện hoặc yêu cầu tìm bạn để chọn người sẽ bắt cặp tiếp theo nhé","text")
 
 def setFavorite(senderId,favorite):
     usersCollection = app.mongo.db.Users
