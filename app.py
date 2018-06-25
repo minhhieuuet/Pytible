@@ -33,7 +33,23 @@ def getImage():
   ]
 })
 
+@app.route('/getVoice',methods=["GET"])
+def getVoice():
+  return json.dumps({
+  "messages": [
+    {
+      "attachment": {
+        "type": "audio",
+        "payload": {
+          "url": request.args.get('url')
+        }
+      }
+    }
+  ]
+})
+
 @app.route('/setFavorite',methods=["GET"])
 def setFavorite():
   Chatible.setFavorite(request.args.get("senderId"),request.args.get("favorite"))
   return "1"
+

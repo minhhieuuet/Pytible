@@ -11,6 +11,14 @@ def isFacebookMessage(url):
         return url.split(" ")
     return False
 
+def isFacebookVoice(url):
+    o = urlparse(url)
+    if o.scheme != 'https': 
+        return False
+    if ('cdn.fbsbx.com' in o.hostname) and (o.path.endswith('.mp4')):
+        return url.split(" ")
+    return False
+
 def isCommand(msg):
     if(msg.startswith("//")):
         return msg.split("//")[1]
@@ -43,8 +51,11 @@ def handleUser(senderId,timestamp,message,name,profile_pic,gender):
                 if(status==2):
                     partnerId = result['idCouple']
                     isImage = isFacebookMessage(message)
+                    isVoice = isFacebookVoice(message)
                     if(isImage):
                         handleMessage(partnerId,isImage,"image")
+                    elif(isVoice):
+                        handleMessage(partnerId,isVoice,"voice")
                     else:
                         if(message.lower()=="pp"):
                             baibai(senderId,partnerId)
@@ -57,6 +68,9 @@ def handleMessage(senderId,msg,type):
     if(type=="image"):
         for img in msg:
             ChatfuelAPI.sendImage(senderId,img)
+    if(type=="voice"):
+        for voice in msg:
+            ChatfuelAPI.sendVoice(senderId,voice)
 
 def findUser(senderFavorite, senderGender, senderId):
     usersCollection = app.mongo.db.Users
@@ -125,7 +139,7 @@ def code(senderId,msg,status):
         if(status==0):
             ChatfuelAPI.sendChangeFavorite(senderId)
         else:
-            handleMessage(senderId,"Vui lòng cuộc trò chuyện hoặc yêu cầu tìm bạn để chọn người sẽ bắt cặp tiếp theo nhé","text")
+            handleMessage(senderId,"Vui lòng hủy cuộc trò chuyện hoặc yêu cầu tìm bạn để chọn người sẽ bắt cặp tiếp theo nhé","text")
 
 def setFavorite(senderId,favorite):
     usersCollection = app.mongo.db.Users
