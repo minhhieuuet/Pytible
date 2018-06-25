@@ -61,7 +61,7 @@ def handleMessage(senderId,msg,type):
 def findUser(senderFavorite, senderGender, senderId):
     usersCollection = app.mongo.db.Users
     if(senderFavorite == 'any'):
-        result = list(usersCollection.find({"$or":[{"favorite": senderGender},{"favorite":"any"}],{"status":1},"_id":{"$ne":senderId}})) 
+        result = list(usersCollection.find({"$or":[{"favorite": senderGender},{"favorite":"any"}],"status":1,"_id":{"$ne":senderId}})) 
         if(len(result)==0):
             return senderId
         recId = senderId
@@ -69,7 +69,7 @@ def findUser(senderFavorite, senderGender, senderId):
             recId = result[random.randint(0,len(result)-1)]["_id"]
         return recId
     else:
-        result = list(usersCollection.find({"$or":[{ "favorite": senderGender },{"status":1},{ "favorite": "any" }],"gender": senderFavorite, "_id":{"$ne":senderId}}))
+        result = list(usersCollection.find({"$or":[{ "favorite": senderGender },{ "favorite": "any" }],"gender": senderFavorite,"status":1, "_id":{"$ne":senderId}}))
         if(len(result)==0):
             return senderId
         recId = senderId
