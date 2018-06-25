@@ -8,3 +8,7 @@ class ChatfuelAPI():
     def sendImage(senderId,msg):
         r = requests.post('https://api.chatfuel.com/bots/'+os.getenv('BOT_ID')+'/users/'+str(senderId)+'/send?chatfuel_token='+os.getenv('CHATFUEL_TOKEN')+'&chatfuel_block_id='+os.getenv('CHATFUEL_BLOCK_IMAGE'), json={"urlImage": msg})   
         return str(r.status_code)
+
+    def sendChangeFavorite(senderId):
+        r = requests.post('https://api.chatfuel.com/bots/'+os.getenv('BOT_ID')+'/users/'+str(senderId)+'/send?chatfuel_token='+os.getenv('CHATFUEL_TOKEN')+'&chatfuel_block_id=5b2e3d7ee4b08d708abdb377')        
+        return str(r.status_code)
