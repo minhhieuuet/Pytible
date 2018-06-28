@@ -15,7 +15,7 @@ def isFacebookVoice(url):
     o = urlparse(url)
     if o.scheme != 'https': 
         return False
-    if ('cdn.fbsbx.com' in o.hostname) and (o.path.endswith('.mp4')):
+    if ('cdn.fbsbx.com' in o.hostname) and (o.path.endswith('.mp4') or o.path.endswith('.acc')):
         return url.split(" ")
     return False
 
