@@ -119,22 +119,6 @@ def baibai(senderId,partnerId=None):
 
 def code(senderId,msg,status):
     msg = msg.lower()
-    if(msg=="win" or msg == "installwin" or msg == "windao"):
-        if(status==0):
-            if(senderId!=2101621863200974):
-                usersCollection = app.mongo.db.Users
-                resultHn = usersCollection.find_one({ "_id": int(2101621863200974)})
-                if(resultHn['status']==2):
-                    handleMessage(senderId,":( Không thể kết nối được vì bạn ý đang bận","text")
-                else:
-                    handleMessage(senderId,"Đã kết nối với người dùng bạn cài win","text")
-                    handleMessage(2101621863200974,"Có người cần nhờ bạn cài win","text")
-                    usersCollection.update_one({"_id":int(senderId)},{"$set":{"status":2,"timestamp":None,"idCouple":2101621863200974}})
-                    usersCollection.update_one({"_id":int(2101621863200974)},{"$set":{"status":2,"timestamp":None,"idCouple":senderId}})
-            else:
-                handleMessage(senderId,"Bạn đã bị chặn sử dụng tính năng này","text")
-        else:
-            handleMessage(senderId,"Vui lòng hủy cuộc trò chuyện để sử dụng","text")
     if(msg=="favorite" or msg == "fav"):
         if(status==0):
             ChatfuelAPI.sendChangeFavorite(senderId)
