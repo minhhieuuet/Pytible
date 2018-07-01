@@ -4,6 +4,7 @@ import os
 import Chatible 
 import time
 from flask import json
+
 app = Flask(__name__)
 app.config['MONGO_URI']=os.getenv("MONGO_URI")
 app.config['MONGO_DBNAME']=os.getenv("MONGO_DBNAME")
@@ -31,3 +32,24 @@ def getImage():
     }
   ]
 })
+
+@app.route('/getVoice',methods=["GET"])
+def getVoice():
+  return json.dumps({
+  "messages": [
+    {
+      "attachment": {
+        "type": "audio",
+        "payload": {
+          "url": request.args.get('url')
+        }
+      }
+    }
+  ]
+})
+
+@app.route('/setFavorite',methods=["GET"])
+def setFavorite():
+  Chatible.setFavorite(request.args.get("senderId"),request.args.get("favorite"))
+  return "1"
+
