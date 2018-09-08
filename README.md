@@ -9,6 +9,11 @@ Do chính sách của Facebook đã khóa API Messenger Platforms vì vậy ta k
 - Cái menu có cái "Create bot ... " của nó :) Một là xóa hẳn 2 là cống nạp
 - Phụ thuộc vào nó
 
+## Tính năng:
+- [x] Ghép cặp 2 người lạ
+- [x] Cho phép lựa chọn giới tính
+- [x] Send voice, vid các thứ các thứ =))
+
 ## Deploy lên Server Heroku
 Chi tiết mình sẽ để ở file pdf sau: [Cách deploy lên Server](https://github.com/nghminh163/ChatibleForChatfuel/blob/master/H%C6%B0%E1%BB%9Bng%20d%E1%BA%ABn%20deploy%20Chatible%20cho%20Chatfuel.pdf)
 
